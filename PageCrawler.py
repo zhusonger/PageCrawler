@@ -46,4 +46,4 @@ def send():
 
 # 你输入的参数
 urls = read_urls()
-# send()
+send()
