@@ -28,6 +28,13 @@ def read_urls():
                 desc = the_list[2] if len(the_list) > 2 else ""
                 f_path = folder + the_list[0] + ".jpeg"  # os.path.join(script_dir, )
                 the_urls.append((f_path, the_list[1], desc))
+                im = Image.open(f_path)
+                (x, y) = im.size
+                x_s = 720  # define standard width
+                y_s = int(y * x_s * 1.0 / x + 0.5)  # calc height based on standard width
+                # print(x_s, y_s)
+                out = im.resize((x_s, y_s), Image.ANTIALIAS)  # resize image with high-quality
+                out.save(f_path, quality=100)
         except Exception as e:
             print(e)
     return the_urls
