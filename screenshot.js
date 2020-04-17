@@ -35,8 +35,8 @@ const folder = 'screenshot_'+year+'_'+month+'_'+day+'/';
     	console.log(desc+"["+name+"]:"+url);
     	
 	    await page.setViewport({
-	        width: 1080,
-	        height: 1920,
+	        width: 720,
+	        height: 1280,
 	        isMobile: true
 	    });
 		await page.goto(url);
