@@ -1,29 +1,13 @@
 # -*- coding: utf-8 -*-
 
-from selenium import webdriver
-from selenium.webdriver.chrome.options import Options
-import os
 import time
 import LasongEmail
+import sys
 
-folder = "pics_" + time.strftime("%Y_%m_%d", time.localtime())
-if not os.path.exists(folder):
-    os.makedirs(folder)
+print(sys.argv)
 
-
-def get_image(local_url, pic_name):
-    # 控制浏览器写入并转到链接
-    driver.get(local_url)
-    time.sleep(1)
-    # 接下来是全屏的关键，用js获取页面的宽高，如果有其他需要用js的部分也可以用这个方法
-    width = driver.execute_script("return document.documentElement.scrollWidth")
-    height = driver.execute_script("return document.documentElement.scrollHeight")
-    print(local_url, width, height)
-    # 将浏览器的宽高设置成刚刚获取的宽高
-    driver.set_window_size(width, height)
-    time.sleep(1)
-    # 截图并关掉浏览器
-    driver.save_screenshot(pic_name)
+folder = sys.argv[1] if len(sys.argv) > 0 else "pics_" + time.strftime("%Y_%m_%d", time.localtime())
+print(folder)
 
 
 def read_urls():
@@ -52,16 +36,6 @@ def send():
                            contents)
 
 
-# 设置chrome开启的模式，headless就是无界面模式
-# 一定要使用这个模式，不然截不了全页面，只能截到你电脑的高度
-chrome_options = Options()
-chrome_options.add_argument('--headless')
-chrome_options.add_argument('--disable-gpu')
-# chrome_options.add_experimental_option('mobileEmulation', {'deviceName': 'Galaxy S5'})
-driver = webdriver.Chrome(options=chrome_options)
 # 你输入的参数
 urls = read_urls()
-for url in urls:
-    get_image(url[1], url[0])
-driver.close()
 send()
