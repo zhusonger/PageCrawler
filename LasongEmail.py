@@ -35,7 +35,7 @@ receivers = ['']
 # content是一个map数组, ["text":<data>]
 def send_email(receiver, subject, contents):
     # 构建alternative结构
-    msg = MIMEMultipart('mixed')
+    msg = MIMEMultipart('related')
     msg['Subject'] = Header(subject).encode()
     msg['From'] = '%s <%s>' % (Header(nickname).encode(), username)
     # msg['Reply-to'] = replyto
@@ -64,16 +64,14 @@ def send_email(receiver, subject, contents):
 
     index = 0
     for content in contents:
-        text = content[0]
         file = content[1]
-        # if text:
 
         if file:
             f = open(file, 'rb')
             data = f.read()
             img = MIMEImage(data)
             f.close()
-            img.add_header("Content-ID", '<image' + str(index)+'>')
+            img.add_header("Content-ID", 'image' + str(index))
             msg.attach(img)
             index = index + 1
 
