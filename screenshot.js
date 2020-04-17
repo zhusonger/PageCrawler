@@ -11,9 +11,8 @@ var day = date.getDate();
 const folder = 'screenshot_'+year+'_'+month+'_'+day+'/';
 (async () => {
 	//同步
-	if (!fs.existsSync(folder)) {
-		fs.mkdirSync(folder);	
-	}
+	delDir(folder);
+	fs.mkdirSync(folder);
     const browser = await puppeteer.launch({
         headless: true,
         args: ['--no-sandbox', '--disable-setuid-sandbox']
@@ -30,7 +29,7 @@ const folder = 'screenshot_'+year+'_'+month+'_'+day+'/';
     for (var i = 0; i < urls.length; i++) {
     	var item = urls[i];
     	var url = item[1].trim();
-    	var name = item[0].trim()+".png";
+    	var name = item[0].trim()+".jpeg";
     	var desc = item[2].trim();
     	console.log(desc+"["+name+"]:"+url);
     	
@@ -96,4 +95,20 @@ function read_file(filename) {
 	        resolve(arr);
 	    });
 	})
+}
+
+function delDir(path){
+    let files = [];
+    if(fs.existsSync(path)){
+        files = fs.readdirSync(path);
+        files.forEach((file, index) => {
+            let curPath = path + "/" + file;
+            if(fs.statSync(curPath).isDirectory()){
+                delDir(curPath); //递归删除文件夹
+            } else {
+                fs.unlinkSync(curPath); //删除文件
+            }
+        });
+        fs.rmdirSync(path);
+    }
 }
