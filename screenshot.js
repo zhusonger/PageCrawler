@@ -15,7 +15,8 @@ const folder = 'screenshot_'+year+'_'+month+'_'+day+'/';
 		fs.mkdirSync(folder);	
 	}
     const browser = await puppeteer.launch({
-        headless: true
+        headless: true,
+        args: ['--no-sandbox', '--disable-setuid-sandbox']
     });
 	const page = await browser.newPage();
     var urls = []
