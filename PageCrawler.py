@@ -47,7 +47,7 @@ def send():
         f_path = the_url[0]
         contents.append((the_url[2], f_path))
 
-    LasongEmail.send_email("song.zhu@kascend.com", '每日截图-' + time.strftime("%Y-%m-%d", time.localtime()),
+    LasongEmail.send_email(None, '每日截图-' + time.strftime("%Y-%m-%d", time.localtime()),
                            contents)
 
 

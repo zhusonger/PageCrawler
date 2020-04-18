@@ -25,6 +25,8 @@ password = cfg.get("User", 'Password')
 temp = base64.b64decode(password)
 password = temp.decode()
 
+email_from = cfg.get("Email", 'From')
+email_to = cfg.get("Email", 'To')
 # print(nickname+","+username+","+password)
 # 自定义的回复地址
 # replyto = '***'
@@ -34,6 +36,8 @@ receivers = ['']
 
 # content是一个map数组, ["text":<data>]
 def send_email(receiver, subject, contents):
+    if not receiver:
+        receiver = email_to
     # 构建alternative结构
     msg = MIMEMultipart('related')
     msg['Subject'] = Header(subject).encode()
