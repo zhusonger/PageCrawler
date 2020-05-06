@@ -28,7 +28,7 @@ const folder = 'screenshot_'+year+'_'+month+'_'+day+'/';
     }
     for (var i = 0; i < urls.length; i++) {
     	var item = urls[i];
-    	if (item == undefined) {
+    	if (item[1] == undefined) {
     	    break;
     	}
     	var url = item[1].trim();
