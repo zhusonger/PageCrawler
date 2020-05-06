@@ -1,3 +1,4 @@
 config.ini
 screenshot_*
 .idea
+__pycache__
