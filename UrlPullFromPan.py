@@ -41,8 +41,8 @@ try:
     local_file = open(local_path, 'w')
     # 若文件不存在,报错，若存在，读取
     for line in pan_file:
-        print(line.strip())
-        local_file.write(line.strip()+"\n")
+        print(line)
+        local_file.write(line)
     pan_file.close()
     local_file.close()
 except Exception as e:
