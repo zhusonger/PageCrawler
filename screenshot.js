@@ -24,7 +24,7 @@ const folder = 'screenshot_'+year+'_'+month+'_'+day+'/';
     for (var i = 0; i < url_lines.length; i++) {
 //    	console.log(url_lines[i]);
     	var arr = url_lines[i].toString().split(",");
-        urls.push(arr.strip())
+        urls.push(arr)
     }
     for (var i = 0; i < urls.length; i++) {
     	var item = urls[i];
