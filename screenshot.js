@@ -28,6 +28,7 @@ const folder = 'screenshot_'+year+'_'+month+'_'+day+'/';
     }
     for (var i = 0; i < urls.length; i++) {
     	var item = urls[i];
+    	console.log(item[2] + " Start");
     	var url = item[1].trim();
     	var name = item[0].trim()+".jpeg";
     	var desc = item[2].trim();
