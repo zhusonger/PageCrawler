@@ -42,7 +42,7 @@ try:
     # 若文件不存在,报错，若存在，读取
     for line in pan_file:
         print(line.strip())
-        local_file.write(line.strip())
+        local_file.write(line.strip()+"\n")
     pan_file.close()
     local_file.close()
 except Exception as e:
