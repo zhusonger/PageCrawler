@@ -52,15 +52,15 @@ const folder = 'screenshot_'+year+'_'+month+'_'+day+'/';
 	    console.log(desc + " Done");
     }
     await browser.close();
-    console.log("Sending Email");
-    var exec = require('child_process').exec;
-    var arg1 = folder
-    exec('python3 PageCrawler.py '+ arg1, function(error,stdout,stderr){
-    if(error) {
-        console.info('stderr : '+stderr);
-    }
-    console.log("Email Done");
-});
+//    console.log("Sending Email");
+//    var exec = require('child_process').exec;
+//    var arg1 = folder
+//    exec('python3 PageCrawler.py '+ arg1, function(error,stdout,stderr){
+//        if(error) {
+//            console.info('stderr : '+stderr);
+//        }
+//        console.log("Email Done");
+//    });
 })();
 
 function autoScroll(page) {

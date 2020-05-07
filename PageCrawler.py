@@ -11,9 +11,7 @@ import os.path
 script_dir = os.path.dirname(os.path.abspath(__file__))
 
 local_time = time.localtime()
-folder = sys.argv[1] if len(
-    sys.argv) > 1 else "screenshot_" + str(local_time.tm_year) + "_" + str(local_time.tm_mon) + "_" + str(
-    local_time.tm_mday) + "/"
+folder = "screenshot_" + str(local_time.tm_year) + "_" + str(local_time.tm_mon) + "_" + str(local_time.tm_mday) + "/"
 
 
 def read_urls():
@@ -32,7 +30,7 @@ def read_urls():
                 (x, y) = im.size
                 x_s = 720  # define standard width
                 y_s = int(y * x_s * 1.0 / x + 0.5)  # calc height based on standard width
-                # print(x_s, y_s)
+                print(x, y, x_s, y_s)
                 out = im.resize((x_s, y_s), Image.ANTIALIAS)  # resize image with high-quality
                 out.save(f_path, quality=100)
         except Exception as e:
@@ -52,5 +50,7 @@ def send():
 
 
 # 你输入的参数
+print(folder)
 urls = read_urls()
 send()
+
