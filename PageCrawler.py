@@ -11,7 +11,7 @@ import os.path
 script_dir = os.path.dirname(os.path.abspath(__file__))
 
 local_time = time.localtime()
-folder = "screenshot_" + str(local_time.tm_year) + "_" + str(local_time.tm_mon) + "_" + str(local_time.tm_mday) + "/"
+folder = "screenshot_" + str(local_time.tm_year)+ "/"
 
 
 def read_urls():

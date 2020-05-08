@@ -6,9 +6,7 @@ const url_path = 'urls.txt';
 
 var date = new Date();
 var year = date.getFullYear();
-var month = date.getMonth()+1;
-var day = date.getDate();
-const folder = 'screenshot_'+year+'_'+month+'_'+day+'/';
+const folder = 'screenshot_'+year;
 (async () => {
 	//同步
 	delDir(folder);
